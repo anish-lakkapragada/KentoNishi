@@ -1,3 +1,5 @@
+![Kento](/kento.png)
+
 ![KentoNishi's GitHub Stats](https://github-readme-stats.vercel.app/api?username=KentoNishi&show_icons=true)
 
 ![KentoNishi's GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=KentoNishi)
