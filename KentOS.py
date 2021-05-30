@@ -116,7 +116,7 @@ def main():
     surface = pygame.display.set_mode((1280, 720))
     surface.fill(WHITE)
 
-    # boot(surface)
+    boot(surface)
     talk(surface)
 
 
