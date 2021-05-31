@@ -20,11 +20,12 @@ CLOCK = pygame.time.Clock()
 class BouncyKento:
     size = 200
 
-    def __init__(self, pos, bounds, x_vel=0, y_vel=0, r_vel=0, gravity=-0.45):
+    def __init__(self, pos, bounds, x_vel=0, y_vel=0, r_vel=0, gravity=-0.45, restitution=0.95):
         self.pos = list(pos)
         self.bounds = bounds
         self.vel = [x_vel, y_vel, r_vel]
         self.grav = gravity
+        self.restitution = restitution
 
         self.img = pygame.transform.scale(IMGS["original"], (self.size, self.size))
 
@@ -35,16 +36,16 @@ class BouncyKento:
 
         h = self.size/2
         if self.pos[0] <= self.bounds[0]+h:
-            self.vel[0] *= -1
+            self.vel[0] *= -self.restitution
             self.pos[0] = h
         if self.pos[0] >= self.bounds[1]-h:
-            self.vel[0] *= -1
+            self.vel[0] *= -self.restitution
             self.pos[0] = 1280-h
         if self.pos[1] <= self.bounds[2]+h:
-            self.vel[1] *= -1
+            self.vel[1] *= -self.restitution
             self.pos[1] = h
         if self.pos[1] >= self.bounds[3]-h:
-            self.vel[1] *= -1
+            self.vel[1] *= -self.restitution
             self.pos[1] = 720-h
 
     def draw(self, surface):
@@ -56,20 +57,16 @@ class BouncyKento:
         surface.blit(self.img, (self.pos[0]-self.size/2, self.pos[1]-self.size/2))
 
 
-def events():
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            exit()
-
-
 def boot(surface):
     progress = 0
 
     while True:
         CLOCK.tick(60)
         pygame.display.update()
-        events()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
 
         surface.fill(WHITE)
         pygame.draw.rect(surface, LIGHT_GRAY, (540, 620, progress*200, 20))
