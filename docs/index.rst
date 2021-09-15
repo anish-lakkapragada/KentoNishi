@@ -1,20 +1,11 @@
-.. KentOS documentation master file, created by
-   sphinx-quickstart on Tue Sep 14 23:06:42 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+KentOS
+======
 
-Welcome to KentOS's documentation!
-==================================
+An assembly language made for fun.
 
 .. toctree::
    :maxdepth: 2
+   :hidden:
    :caption: Contents:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   about.rst
